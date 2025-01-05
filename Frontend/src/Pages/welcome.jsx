@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../Styles/welcome-page.css"
 function Welcome() {
   const [showNext, setShowNext] = useState(false);
 
