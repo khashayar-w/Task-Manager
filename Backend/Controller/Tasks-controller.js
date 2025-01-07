@@ -12,8 +12,8 @@ const getTasks =tryCatchHandler(async(req,res)=>{
 //*insert task
 const addTask = tryCatchHandler(async(req,res)=>{
     //*i used middlewares for validation
-    const {title,description,status} = req.body;
-    const result = await TasksModel.addTask(title,description,status)
+    const {title,description} = req.body;
+    const result = await TasksModel.addTask(title,description)
     sendResponse(res,201,true,result,'Task created successfully')
 });
 

@@ -28,9 +28,9 @@ class TasksModel{
             throw new DataBaseError (error.message || 'Database error occurred')
         }
     };
-    static addTask = async(title,description,status)=>{
+    static addTask = async(title,description)=>{
         try {
-            const [result] = await pool.query('insert into node_project.tasks (title,description,status) values(?,?,?)',[title,description,status])
+            const [result] = await pool.query('insert into node_project.tasks (title,description) values(?,?)',[title,description])
             if(result.affectedRows === 0){
                 throw new DataBaseError('Failed to add the new task  to the database')
             }

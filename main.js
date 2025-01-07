@@ -3,15 +3,21 @@ const app = express()
 const morgan = require('morgan')
 const tasksRoute = require('./Backend/Routes/Tasks-route')
 const errorHandler = require('./Backend/Middlewares/Error-handler')
+const cors = require('cors')
 require('dotenv').config()
 
 //*middlewares
+//?this code below must check again
+app.use(cors()) 
+
 app.use(express.json());
 app.use('/api/tasks',tasksRoute);
 app.use(morgan('dev'));
 app.use((req,res)=>{
     res.status(404).json({message:'Route not found'});
 });
+
+
 app.use(errorHandler);
 
 
