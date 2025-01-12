@@ -13,14 +13,14 @@ function CreateTask() {
     const schema = yup.object({
       title: yup
         .string()
-        // .matches(/^[a-zA-Z0-9\s]{1-250}$/, "Title must be 1-250 characters")
+        .matches(/^[a-zA-Z0-9\s]{1,250}$/, "Title must be 1-250 characters")
         .required("title is required"),
       description: yup
         .string()
-        // .matches(
-        //   /^[a-zA-Z0-9\s]{1-300}$/,
-        //   "Description must be 1-300 characters"
-        // )
+        .matches(
+          /^[a-zA-Z0-9\s]{1,300}$/,
+          "Description must be 1-300 characters"
+        )
         .required("description is required"),
     });
   //* Functions
