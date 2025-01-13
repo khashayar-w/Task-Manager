@@ -2,13 +2,14 @@ import {BrowserRouter as Router , Routes , Route} from "react-router-dom"
 import Welcome from "./Pages/welcome"
 import CreateTask from "./Pages/create-task"
 import TaskList from "./Pages/task-list"
-
+import Navbar from "./Components/nav-bar"
 
 function App() {
 
   return (
     <>
-      <Router>    
+      <Router> 
+      <Navbar/> 
         <Routes>
           <Route path="/" element={<Welcome/>}/>
           <Route path="/add" element={<CreateTask/>}/>
