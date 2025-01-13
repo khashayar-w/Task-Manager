@@ -6,7 +6,7 @@ const {sendResponse}=require('../Helpers/response-handler')
 //*get tasks
 const getTasks =tryCatchHandler(async(req,res)=>{
     const result = await TasksModel.getTasks()
-    res.status(200).send(result)
+    sendResponse(res,200,true,result,'Data received')
 });
 
 //*insert task
