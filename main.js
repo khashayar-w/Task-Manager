@@ -10,6 +10,10 @@ require('dotenv').config()
 //?this code below must check again
 app.use(cors()) 
 
+app.get('/copyright',(req,res)=>{
+    res.json({ message: "© 2025 gitHub: khashayar-w. All rights reserved." });
+})
+
 app.use(express.json());
 app.use('/api/tasks',tasksRoute);
 app.use(morgan('dev'));

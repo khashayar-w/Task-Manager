@@ -9,6 +9,7 @@
     --fw-title:bold;
     --text-shadow:-2px 2px 5px rgba(0,0,0,0.5)
     --description-bg:#dfe4ea;
+    --box-shadow: -1px 6px 8px rgba(0,0,0,0.5);
     --highlight-text:#ff4757;
 }
 
@@ -18,7 +19,9 @@
     --background-color:#1d1d1f;
     --text-color: #f5f5f7;
     --description-bg: #57606f;
+    /** box shadow must test again */
     --text-shadow:3px 3px 8px rgba(0 , 0 , 0 , 0.7);
+    --box-shadow:-1px 6px 8px rgba(0,0,0,0.5) ;
 }
 
 

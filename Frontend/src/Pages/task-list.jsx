@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { getTask, deleteTask, updateTask } from "../Services/api";
+
+
+
 function TaskList() {
   //* state
   const [tasks, setTasks] = useState([]);
@@ -9,7 +12,7 @@ function TaskList() {
     title: "",
     description: "",
     status: "",
-  }); //* فرم داده‌ها
+  }); 
 
   //* functions
   const fetchData = async () => {
@@ -31,7 +34,6 @@ function TaskList() {
         "Are you sure you want to delete this task?"
       );
       if (!confirmation) return;
-
       setLoading(true);
       await deleteTask(id);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
@@ -43,7 +45,7 @@ function TaskList() {
   };
 
   const editHandler = (task) => {
-    setEditingTask(task); //* تسک در حال ویرایش را تنظیم می‌کنیم
+    setEditingTask(task); 
     setFormData({
       title: task.title,
       description: task.description,
@@ -54,13 +56,13 @@ function TaskList() {
   const submitEditHandler = async (e) => {
     e.preventDefault();
     try {
-      await updateTask(editingTask.id, formData); //* درخواست آپدیت به سرور
+      await updateTask(editingTask.id, formData); //* sending update request to server
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task.id === editingTask.id ? { ...task, ...formData } : task
         )
       );
-      setEditingTask(null); // *بعد از ویرایش تسک، ویرایش را تمام می‌کنیم
+      setEditingTask(null); 
     } catch (error) {
       console.error("Error updating task:", error);
     }
@@ -71,15 +73,13 @@ function TaskList() {
   }, []);
 
   return (
-    <div className="d-flex flex-wrap flex-column justify-content-center align-items-center">
-      <h3>Task List</h3>
+    <div  className="d-flex flex-wrap flex-column justify-content-center align-items-center ">
+      <h3 className="m-5">Task List</h3>
       {loading && <p>Deleting task...</p>}
-
-      {/* اینجا جدول را داخل div با کلاس table-responsive قرار دهید */}
-      <div className="table-responsive">
-        <table className="table table-striped table-bordered">
+      <div className="table-responsive ">
+        <table  className="table table-striped shadow  table-bordered ">
           <thead className="table">
-            <tr>
+            <tr className="form-text">
               <th>Id</th>
               <th>Title</th>
               <th>Description</th>
@@ -89,8 +89,8 @@ function TaskList() {
           </thead>
           <tbody>
             {tasks.map((task) => (
-              <tr key={task.id}>
-                <td className="bg-danger">{task.id}</td>
+              <tr className="form-text"  key={task.id}>
+                <td className="bg-danger text-light">{task.id}</td>
                 <td className="table-warning">{task.title}</td>
                 <td className="table-info">{task.description}</td>
                 <td className="table-success">{task.status}</td>
@@ -116,8 +116,7 @@ function TaskList() {
 
       {editingTask && (
         <div className="edit-form">
-          {/* فرم ویرایش */}
-          <h4>Edit Task</h4>
+          <h4 className="mt-3 text-center fw-bolder">Edit Task</h4>
           <form onSubmit={submitEditHandler}>
             <div className="form-group">
               <label>Title</label>

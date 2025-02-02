@@ -1,5 +1,6 @@
 import {  useState } from "react";
 import { insertData } from "../Services/api";
+import "../Styles/create-task.css"
 import * as yup from "yup"
 
 function CreateTask() {
@@ -75,19 +76,18 @@ function CreateTask() {
 
   return (
     <>
-      <div className="form-container text-center">
+      <div className="form-container ">
         <div className="title">
           <h1>Add your Task</h1>
         </div>
         <form
           style={{
-            display: "flex",
-            flexDirection: "column",
-            marginTop: "25vh",
+    
           }}
           onSubmit={handleSubmit}
           className="form"
         >
+          <label htmlFor="title">Title</label>
           <input
             onChange={handleTitleChange}
             id="title"
@@ -96,16 +96,16 @@ function CreateTask() {
             autoComplete="off"
             required
           />
-          <label htmlFor="title">Title</label>
+          <label htmlFor="description">Description</label>
           <input
             onChange={handleDescriptionChange}
             id="description"
             type="text"
             value={description}
             autoComplete="off"
+            onPaste="false"
             required
           />
-          <label htmlFor="description">Description</label>
           <button
             className="btn"
             style={{
@@ -129,11 +129,11 @@ function CreateTask() {
           </button>
         </form>
         {task && (
-          <div>
-            <h2>Task Details</h2>
-            <p>Title: {task.title}</p>
-            <p>Description: {task.description}</p>
-          </div>
+          <ul className="list">
+            <li className="info-title">Task Details</li>
+            <li className="about-1">Title: {task.title}.</li>
+            <li className="about-2">Description: {task.description}.</li>
+          </ul>
         )}
       </div>
     </>
